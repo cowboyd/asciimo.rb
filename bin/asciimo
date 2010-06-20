@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+
+require File.join(File.dirname(__FILE__), "..", "lib", "asciimo")
+require 'optparse'
+
+options = {
+  :font => "Soft.flf"
+}
+parser = OptionParser.new
+
+parser.banner = "Usage: asciimo [options]"
+
+parser.on("-f", "--font FONT", "Render TEXT with this font") do |font|
+  options[:font] = font
+  unless Asciimo.fonts.include?(font)
+    puts "asciimo: invalid font '#{font}' (asciimo --list-fonts to show all)"
+    exit
+  end
+end
+
+parser.on("-c", "--color [COLOR]", "Render TEXT with this color") do |color|
+  options[:color] = color
+  unless Asciimo.colors.include?(color)
+    puts "asciimo: invalid color '#{color}' (must be in {#{Asciimo.colors.join("|")}})"
+    exit
+  end
+end
+
+parser.on("-m MESSAGE", "render MESSAGE instead of STDIN") do |msg|
+  options[:msg] = msg
+end
+
+parser.on("--list-colors", "List possible colors") do
+  puts Asciimo.colors.join(",")
+  exit
+end
+
+parser.on("--list-fonts", "List possible fonts") do
+  puts Asciimo.fonts.join("\n")
+  exit
+end
+
+parser.on("-h", "show help") do
+  puts parser
+  exit
+end
+
+begin
+  parser.parse!(ARGV)
+  puts Asciimo.text(options[:font], (options[:msg] || $stdin.read()).chomp, options[:color])
+rescue OptionParser::ParseError => e
+  puts "asciimo: #{e.message}"
+end
