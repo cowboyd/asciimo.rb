@@ -1,8 +1,7 @@
 require 'v8'
 
-
 module Asciimo
-  VERSION = "0.1.0"
+  VERSION = "0.2.0"
   HOME = File.join(File.dirname(__FILE__), "..", "ext", "asciimo")
   LIB = File.join(HOME, "lib")
   FONTS = File.join(HOME, "fonts")

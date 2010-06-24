@@ -1,7 +1,11 @@
 Asciimo.rb
 =======
 
-A ruby wrapper around asciimo ([http://asciimo.com](http://asciimo.com))
+A ruby wrapper around asciimo
+
+* homepage: [http://asciimo.com](http://asciimo.com)
+* asciimo.js: [http://github.com/Marak/asciimo](http://github.com/Marak/asciimo)
+* asciimo.rb: [http://github.com/cowboyd/asciimo.rb](http://github.com/cowboyd/asciimo.rb)
 
 Install
 =======
@@ -56,12 +60,6 @@ Use it from Ruby
     require 'asciimo'
     
     Asciimo.text("Star_Wars.flf", "Str Wrz", "yellow")
-    
-Angry Propers
-=============
 
-* Marak Squires
-* Patrick Gillespie
-* The Internet
 
     
