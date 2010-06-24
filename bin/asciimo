@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), "..", "lib", "asciimo")
 require 'optparse'
 
 options = {
-  :font => "Soft.flf"
+  :font => "drpepper"
 }
 parser = OptionParser.new
 
@@ -37,6 +37,11 @@ end
 
 parser.on("--list-fonts", "List possible fonts") do
   puts Asciimo.fonts.join("\n")
+  exit
+end
+
+parser.on("-v", "--version", "show version information") do
+  puts Asciimo::VERSION
   exit
 end
 
